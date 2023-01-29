@@ -24,10 +24,6 @@ const fetchAPI = () => {
     });
 };
 
-const useAPI = async () => {
-    return fetchAPI();
-};
-
 var dropdownMenu = document.querySelector(".dropdown-menu");
 dropdownMenu.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -37,6 +33,6 @@ dropdownMenu.addEventListener("click", (e) => {
     dropdownToggle.innerHTML = buttonText;
 });
 
-document.querySelector("#get").addEventListener("click", () => {
-    useAPI();
+document.querySelector("#get").addEventListener("click", async () => {
+    await fetchAPI();
 });
