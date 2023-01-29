@@ -11,13 +11,17 @@ dropdownMenu.addEventListener("click", (e) => {
 });
 
 document.querySelector("#get").addEventListener("click", () => {
-    fetch("https://api.chucknorris.io/jokes/random?category=" + type)
+    fetch(
+        "https://api.chucknorris.io/jokes/random?category=" + type.toLowerCase()
+    )
         .then((response) => {
             return response.json();
         })
         .then((data) => {
             console.log(data);
-            text.innerText = data["value"];
+            if (data["value"]) {
+                text.innerText = data["value"];
+            }
         })
         .catch("404");
 });
