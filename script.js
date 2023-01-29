@@ -11,9 +11,13 @@ dropdownMenu.addEventListener("click", (e) => {
 });
 
 document.querySelector("#get").addEventListener("click", () => {
-    fetch(
-        "https://api.chucknorris.io/jokes/random?category=" + type.toLowerCase()
-    )
+    var selectedCetegory = type.toLowerCase();
+    var url =
+        type === "random" || selectedCetegory === "random"
+            ? "https://api.chucknorris.io/jokes/random"
+            : "https://api.chucknorris.io/jokes/random?category=" +
+              selectedCetegory;
+    fetch(url)
         .then((response) => {
             return response.json();
         })
